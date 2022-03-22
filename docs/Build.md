@@ -7,7 +7,7 @@ dotnet pack
 ```
 dotnet pack
 dotnet tool uninstall -g DDC
-dotnet tool install --global --add-source ../packages/dist/ DDC
+dotnet tool install --global --add-source ./packages/ DDC
 
 ```
 # Upload 
