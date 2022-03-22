@@ -7,16 +7,30 @@
 		<Nullable>enable</Nullable>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>ddc</ToolCommandName>
-		<PackageOutputPath>../packages/dist</PackageOutputPath>
+		<PackageOutputPath>../../packages/dist</PackageOutputPath>
 		<Platforms>AnyCPU;x86;x64</Platforms>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Version>1.0.1</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Include="..\..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Colorful.Console" Version="1.2.15" />
 		<PackageReference Include="CommandLineParser" Version="2.8.0" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="x86\**">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+	<Import Project="..\Shared\Shared.projitems" Label="Shared" />
 
 </Project>

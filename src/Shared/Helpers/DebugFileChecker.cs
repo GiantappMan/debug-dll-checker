@@ -6,37 +6,8 @@ namespace DDC.Helpers
 {
     internal class DebugFileChecker
     {
-        internal static IEnumerable<(string Filename, bool IsDebug)> Check(string? path)
-        {
-            if (path == null)
-                yield break;
-
-            string[] searchExtensions = { ".dll", ".exe", ".lib" };
-            var files = Directory
-                        .GetFiles(path!, "*.*", SearchOption.TopDirectoryOnly)
-                        .Where(file => searchExtensions.Any(ext => file.ToLower().Contains(ext)))
-                        .ToList();
-            foreach (var file in files)
-            {
-                if (!IsAssembly(file))
-                    continue;
-                if (ArchitectureHelper.UnmanagedDllIs32Bit(file))
-                {
-
-                }
-                if (IsInDebugMode(file))
-                {
-                    yield return (file, true);
-                }
-                else
-                {
-                    yield return (file, false);
-                }
-            }
-        }
-
         #region private
-        static bool IsAssembly(string path)
+        internal static bool IsAssembly(string path)
         {
             using FileStream? fs = new(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             // Try to read CLI metadata from the PE file.
@@ -51,12 +22,12 @@ namespace DDC.Helpers
             MetadataReader reader = peReader.GetMetadataReader();
             return reader.IsAssembly;
         }
-        static bool IsInDebugMode(string FileName)
+        internal static bool IsInDebugMode(string FileName)
         {
             Assembly assembly = Assembly.LoadFile(FileName);
             return IsInDebugMode(assembly);
         }
-        static bool IsInDebugMode(Assembly Assembly)
+        internal static bool IsInDebugMode(Assembly Assembly)
         {
             var attributes = Assembly.GetCustomAttributes(typeof(System.Diagnostics.DebuggableAttribute), false);
             if (attributes.Length > 0)

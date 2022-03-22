@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "DDC": {
-      "commandName": "Project",
-      "commandLineArgs": "-p \"C:\\Program Files (x86)\\Razer\\Razer Cortex\""
-    }
-  }
-}
