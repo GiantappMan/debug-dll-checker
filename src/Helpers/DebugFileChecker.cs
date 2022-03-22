@@ -20,7 +20,10 @@ namespace DDC.Helpers
             {
                 if (!IsAssembly(file))
                     continue;
+                if (ArchitectureHelper.UnmanagedDllIs32Bit(file))
+                {
 
+                }
                 if (IsInDebugMode(file))
                 {
                     yield return (file, true);
@@ -66,6 +69,7 @@ namespace DDC.Helpers
             else
                 return false;
         }
+
         #endregion
     }
 }

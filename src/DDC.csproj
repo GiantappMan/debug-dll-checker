@@ -8,12 +8,10 @@
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>ddc</ToolCommandName>
 		<PackageOutputPath>../packages/dist</PackageOutputPath>
+		<Platforms>AnyCPU;x86;x64</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="nupkg\**" />
-	  <EmbeddedResource Remove="nupkg\**" />
-	  <None Remove="nupkg\**" />
 	</ItemGroup>
 
 	<ItemGroup>
