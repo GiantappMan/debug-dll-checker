@@ -100,7 +100,7 @@ class Program
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.RedirectStandardOutput = true;
                 p.StartInfo.Arguments = $"\"{file}\"";
-                p.StartInfo.FileName = Path.Combine(_runDir, "x86/DDC_X86.exe");
+                p.StartInfo.FileName = Path.Combine(_runDir, "ddc_x86/DDC_X86.exe");
                 p.Start();
 
                 string output = p.StandardOutput.ReadToEnd();
