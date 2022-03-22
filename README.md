@@ -3,8 +3,16 @@ a debug dll checker for dotnet
 
 # How to use
 ```
+# install 
 dotnet tool install --global DDC
 
+# upgarde
+dotnet tool update --global DDC
+```
+```
+# run in commandline
 ddc
-ddc -p
+
+# or 
+ddc -p .\debug\
 ```
