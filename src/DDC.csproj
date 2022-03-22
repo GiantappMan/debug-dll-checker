@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>ddc</ToolCommandName>
+		<PackageOutputPath>../packages/dist</PackageOutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="nupkg\**" />
+	  <EmbeddedResource Remove="nupkg\**" />
+	  <None Remove="nupkg\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Colorful.Console" Version="1.2.15" />
+		<PackageReference Include="CommandLineParser" Version="2.8.0" />
+	</ItemGroup>
+
+</Project>
