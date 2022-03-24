@@ -23,7 +23,10 @@ class Program
         _ = Parser.Default.ParseArguments<Options>(args)
                    .WithParsed(o =>
                    {
-                       o.Path = Path.Combine(Environment.CurrentDirectory, o.Path ?? "");
+                       if (!Directory.Exists(o.Path))
+                       {
+                           o.Path = Path.Combine(Environment.CurrentDirectory, o.Path ?? "");
+                       }
                        options = o;
                    });
 
@@ -57,7 +60,7 @@ class Program
 
         Console.WriteLine($"Debug: {debugCount}", Color.Red);
         Console.WriteLine($"Release: {releaseCount}", Color.Green);
-        Console.WriteLine($"Failed: {releaseCount}", Color.Yellow);
+        Console.WriteLine($"Failed: {failedCount}", Color.Yellow);
     }
     internal static IEnumerable<(string Filename, bool? IsDebug, string Arch)> Check(string? path)
     {
