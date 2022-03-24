@@ -66,7 +66,7 @@ class Program
 
         string[] searchExtensions = { ".dll", ".exe", ".lib" };
         var files = Directory
-                    .GetFiles(path!, "*.*", SearchOption.TopDirectoryOnly)
+                    .GetFiles(path!, "*.*", SearchOption.AllDirectories)
                     .Where(file => searchExtensions.Any(ext => file.ToLower().Contains(ext)))
                     .ToList();
         foreach (var file in files)
